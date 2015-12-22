@@ -3,7 +3,16 @@
 
 #### First extract PPCA axes from morphological dataset 
 phy1$node.label <- 1:phy1$Nnode
-nrow(md <- subset(allkpdat, !is.na(WL) & binomial %in% phy1$tip.label, select=intersect(names(allkpdat),names(mph)[-ncol(mph)]))) 	
+
+head(mm <- read.csv('Data/males_final.csv'))
+head(mf <- read.csv('Data/females_final.csv')[,6:25])
+mf$SEX<-'F' ## replace "FALSE" values with actual "F"s
+ head(mph <- rbind(mm,mf))
+ head(mph$binomial <- paste(mph$GENUS, mph$SPECIES, sep='_'))
+ 
+nrow(md <- subset(allkpdat, !is.na(WL) & binomial %in% phy1$tip.label, select=intersect(names(allkpdat),names(mph)))) 	
+#[-ncol(mph)]
+
 ## select all columns of allkpdat that are in mph, except for the last one (binomial.old)
 # 327
 Ntip(phym <-drop.tip(compute.brlen(phy1, power=1), tip=which(!phy1$tip.label %in% md$binomial))) ## compute branch lengths using Grafen's method
