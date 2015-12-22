@@ -1,47 +1,4 @@
 
-
-### Analysis of syrphid morphology according to karyotype evolution
-
-### Load relevant packages
-library(ape)
-library(lme4)
-library(CAIC)
-library(nlme)
-library(caper)
-
- ### From 2014.syrphid.analysis.r
-
-source('phyl_pca.r')
-source('phyl_resid.r')
-
-# Load phylogeny
-source('import_phylogeny.r')
-Ntip(phy1)  ## 970
-original.phylogeny <- phy1  ## preserve copy of original phylogeny
- 
-# Load data  -- old procedures from 2014.syrphid.analysis.r -- revive only if necessary
-#       source('import_karyotype_dataset.r')
-#       nrow(kar)  # 519
-#       nrow(kar1) # 301
-#       source('import_morphology_dataset.r')
-#       #morph <- read.csv('Data/data-syrph-morph-ecol-data.csv')    ### Ecological trait dataset - NOT USED
-
-### From 2015.syrphid.analysis.1.r
-
-source('james_phylo_lrt.r') ## My script to perform a LRT on a PGLS
-
-nrow(allkpdat <- read.csv(file='Data/allkpdat.csv'))  ### Union dataset with names amended by Dad, combined
-#[1] 657
-nrow(kpdat <- read.csv(file='Data/kpdat.csv'))  ### Consensus dataset with names amended by Dad
-#[1] 162
-
-source('genus_level_tree.r') ### code from 2015.syrphid.analysis.1.r
-
-
-length(intersect(allkpdat$binomial, phy1$tip.label))
-#[1] 653
-
-
 ### Create morphological PPCA
 
 #### First extract PPCA axes from morphological dataset 
@@ -95,7 +52,6 @@ mload
 diag(mpca.results$Eval)/sum(diag(mpca.results$Eval))  ### Relative importance of each axis
 #	 [1] 0.7933899371 0.0977827823 0.0354093044 0.0206102657 0.0169713490 0.0071686739 0.0066331194 0.0056697240 0.0036193575 0.0030079483 0.0026167689 0.0021735668
 #	[13] 0.0017607919 0.0013077145 0.0009000419 0.0006164649 0.0003621897
-
 
 
 
