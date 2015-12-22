@@ -1,11 +1,10 @@
-
-
+ 
 ### Analysis of syrphid morphology according to karyotype evolution
 
 ### Load relevant packages
 library(ape)
 library(lme4)
-#library(CAIC)
+#library(CAIC)  ## it's caper now
 library(nlme)
 library(caper)
 
@@ -71,13 +70,38 @@ source('genus_level_tree.r') ### code from 2015.syrphid.analysis.1.r
 
 length(intersect(allkpdat$binomial, phy1$tip.label))
 #[1] 653
-
-
+ 
 ### Run morphological PPCA analysis
 source('analysis_morphol_ppca.r') 
 
 ### Run karyotype PPCA analysis
 source('analysis_karyo_ppca.r') 
+  
+## PGLS analysis of size-shape relationship WRT different taxonomic levels
+source('analysis_ppca_morphol_vs_tax_pgls.r')
+
+## D-PGLS analysis of size-shape relationship WRT different taxonomic levels
+source('analysis_ppca_morphol_vs_tax_dpgls.r')
+
+## PGLS analysis of size-shape relationship WRT NP (or KPPCA1)
+source('analysis_size_shape_vs_np_pgls.r')
+
+## D-PGLS analysis of size-shape relationship WRT NP (or KPPCA1)
+source('analysis_size_shape_vs_np_dpgls.r')
+
+## Karyotype-group analysis
+source('analysis_size_shape_vs_karyotypegroup.r')
+
+## Chromosomal evolution using Chromevol
+source('analysis_chromevol.r')
+
+
+### FIGURES
+
+source('figure_size_shape_vs_taxonomy.r')
+source('figure_combined_allometry.r')
+
+
 
 ### Not used (apparently) - var comp analyses of morph and karyo
 ##          ## morph, varcomp analysis
@@ -108,12 +132,3 @@ source('analysis_karyo_ppca.r')
 ##          
 ##          nrow(kdat <- subset(kdat, select=c('Comp.1','Comp.2','Comp.3','animal','genus','subtri','tri','subf'))) # Select only data will use
 ##          # 303
-
-
-## PGLS analysis of size-shape relationship WRT different taxonomic levels
-source('analysis_ppca_morphol_vs_tax_pgls.r')
-
-## D-PGLS analysis of size-shape relationship WRT different taxonomic levels
-source('analysis_ppca_morphol_vs_tax_dpgls.r')
-
-
