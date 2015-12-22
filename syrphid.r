@@ -85,6 +85,9 @@ source('analysis_karyo_ppca.r')
 
 
 ## PGLS analysis of size-shape relationship WRT different taxonomic levels
-source('analysis_ppca_morphol_vs_tax.r')
+source('analysis_ppca_morphol_vs_tax_pgls.r')
+
+## D-PGLS analysis of size-shape relationship WRT different taxonomic levels
+source('analysis_ppca_morphol_vs_tax_dpgls.r')
 
 
