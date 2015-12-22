@@ -1,6 +1,8 @@
 ##########  Use D.pgls function from Adams 2014 to look at multivariate data ###########
 
 
+
+
 #### dpgls.r is deprecated as it is now incorporated into package geomorph
 #source('dpgls.r') ### Contains code for the D.pgls() function -- removes need for PPCA for shape
 
@@ -29,42 +31,40 @@ procD.pgls(Y[,-grep('HW', colnames(Y))] ~ mtreedat$data$HW * mtreedat$data$genus
 
 ## subtribe
 procD.pgls(Y ~ mtreedat$data$Comp.1 * mtreedat$data$subtri + mtreedat$data$SEX, phy=mtreedat$phy, iter=1000)
-df       SS       MS     Rsq         F    P.val
-mtreedat$data$Comp.1                        1 18860010 18860010 0.73232 1861.0340 0.000999
-mtreedat$data$subtri                       22   139205     6327 0.00541    0.6244 0.001998
-mtreedat$data$Comp.1:mtreedat$data$subtri  22  3722276   169194 0.14453   16.6955 0.000999
-mtreedat$data$SEX                           1   194866   194866 0.00757   19.2287 0.009990
-Residuals                                 280  2837564    10134  
+# df       SS       MS     Rsq         F    P.val
+# mtreedat$data$Comp.1                        1 18860010 18860010 0.73232 1861.0340 0.000999
+# mtreedat$data$subtri                       22   139205     6327 0.00541    0.6244 0.001998
+# mtreedat$data$Comp.1:mtreedat$data$subtri  22  3722276   169194 0.14453   16.6955 0.000999
+# mtreedat$data$SEX                           1   194866   194866 0.00757   19.2287 0.009990
+# Residuals                                 280  2837564    10134  
 
 procD.pgls(Y[,-grep('HW', colnames(Y))] ~ mtreedat$data$HW * mtreedat$data$subtri + mtreedat$data$SEX, phy=mtreedat$phy, iter=1000)
-df       SS       MS     Rsq         F    P.val
-mtreedat$data$HW                        1 17963486 17963486 0.69801 1696.8619 0.000999
-mtreedat$data$subtri                   22   113205     5146 0.00440    0.4861 0.004995
-mtreedat$data$HW:mtreedat$data$subtri  22  4589554   208616 0.17834   19.7062 0.000999
-mtreedat$data$SEX                       1   104695   104695 0.00407    9.8897 0.051948
-Residuals                             280  2964163    10586 
+# df       SS       MS     Rsq         F    P.val
+# mtreedat$data$HW                        1 17963486 17963486 0.69801 1696.8619 0.000999
+# mtreedat$data$subtri                   22   113205     5146 0.00440    0.4861 0.004995
+# mtreedat$data$HW:mtreedat$data$subtri  22  4589554   208616 0.17834   19.7062 0.000999
+# mtreedat$data$SEX                       1   104695   104695 0.00407    9.8897 0.051948
+# Residuals                             280  2964163    10586 
 
 ## tribe
 procD.pgls(Y ~ mtreedat$data$Comp.1 * mtreedat$data$tri + mtreedat$data$SEX, phy=mtreedat$phy, iter=1000)
-df       SS       MS     Rsq         F    P.val
-mtreedat$data$Comp.1                     1 18860010 18860010 0.73232 1568.7143 0.000999
-mtreedat$data$tri                       13    15567     1197 0.00060    0.0996 0.137862
-mtreedat$data$Comp.1:mtreedat$data$tri  13  3136020   241232 0.12177   20.0649 0.000999
-mtreedat$data$SEX                        1   159591   159591 0.00620   13.2742 0.033966
-Residuals                              298  3582732    12023       
+# df       SS       MS     Rsq         F    P.val
+# mtreedat$data$Comp.1                     1 18860010 18860010 0.73232 1568.7143 0.000999
+# mtreedat$data$tri                       13    15567     1197 0.00060    0.0996 0.137862
+# mtreedat$data$Comp.1:mtreedat$data$tri  13  3136020   241232 0.12177   20.0649 0.000999
+# mtreedat$data$SEX                        1   159591   159591 0.00620   13.2742 0.033966
+# Residuals                              298  3582732    12023       
 
 procD.pgls(Y[,-grep('HW', colnames(Y))] ~ mtreedat$data$HW * mtreedat$data$tri + mtreedat$data$SEX, phy=mtreedat$phy, iter=1000)
-df       SS       MS     Rsq         F    P.val
-mtreedat$data$HW                     1 17963486 17963486 0.69801 1274.7411 0.000999
-mtreedat$data$tri                   13    88254     6789 0.00343    0.4818 0.007992
-mtreedat$data$HW:mtreedat$data$tri  13  3432873   264067 0.13339   18.7390 0.000999
-mtreedat$data$SEX                    1    51114    51114 0.00199    3.6272 0.256743
-Residuals                          298  4199377    14092        
+# df       SS       MS     Rsq         F    P.val
+# mtreedat$data$HW                     1 17963486 17963486 0.69801 1274.7411 0.000999
+# mtreedat$data$tri                   13    88254     6789 0.00343    0.4818 0.007992
+# mtreedat$data$HW:mtreedat$data$tri  13  3432873   264067 0.13339   18.7390 0.000999
+# mtreedat$data$SEX                    1    51114    51114 0.00199    3.6272 0.256743
+# Residuals                          298  4199377    14092        
 
 
-
-
-
+  
 ## Same thing for np
 row.names(kpdat) <- kpdat$binomial
 kpdat <- kpdat[match(row.names(kmtreedat$data), row.names(kpdat)),]
@@ -92,9 +92,11 @@ Y <- as.matrix(kpdat[!is.na(kmtreedat$data$kcomp1),grep("WL", names(kpdat)):grep
 ### Look at KPPCA1
 kmtreedat.kcomp1 <- subset(kmtreedat$data, !is.na(kcomp1))
 kmtreedat.kcomp1$binomial <- row.names(kmtreedat.kcomp1)
+kmtreedat.kcomp1$genus <- 
 kmtreedat.kcomp1 <- comparative.data(drop.tip(kmtreedat$phy, tip=which(!kmtreedat$phy$tip.label %in% row.names(kmtreedat.kcomp1))), kmtreedat.kcomp1, binomial)
 
-kmtreedat.kcomp1$data$genus <- factor(kmtreedat.kcomp1$data$genus)
+kmtreedat.kcomp1$data$genus <- do.call(rbind.data.frame, strsplit(row.names(kmtreedat.kcomp1$data), '_'))[,1]
+#kmtreedat.kcomp1$data$genus <- factor(kmtreedat.kcomp1$data$genus)
 
 procD.pgls(Y ~ kmtreedat.kcomp1$data$SEX + kmtreedat.kcomp1$data$Comp.1 + kmtreedat.kcomp1$data$kcomp1 + kmtreedat.kcomp1$data$genus + kmtreedat.kcomp1$data$Comp.1:kmtreedat.kcomp1$data$kcomp1, phy=kmtreedat.kcomp1$phy, iter=500)
 #	                                                          df      SS      MS     Rsq        F    P.val
@@ -104,8 +106,7 @@ procD.pgls(Y ~ kmtreedat.kcomp1$data$SEX + kmtreedat.kcomp1$data$Comp.1 + kmtree
 #	kmtreedat.kcomp1$data$genus                               47  284023    6043 0.11917   1.1988 0.003992
 #	kmtreedat.kcomp1$data$Comp.1:kmtreedat.kcomp1$data$kcomp1  1   46303   46303 0.01943   9.1852 0.045908
 #	Residuals                                                 52  262136    5041                          
-> 
-  > 
+
   procD.pgls(Y ~ kmtreedat.kcomp1$data$SEX + kmtreedat.kcomp1$data$Comp.1 + kmtreedat.kcomp1$data$kcomp1 + kmtreedat.kcomp1$data$genus + kmtreedat.kcomp1$data$Comp.1:kmtreedat.kcomp1$data$genus, phy=kmtreedat.kcomp1$phy, iter=500)
 #	                                                         df      SS      MS     Rsq        F    P.val
 #	kmtreedat.kcomp1$data$SEX                                 1   16739   16739 0.00702   1.1108 0.187625
