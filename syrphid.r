@@ -7,6 +7,7 @@ library(lme4)
 #library(CAIC)  ## it's caper now
 library(nlme)
 library(caper)
+library(Hmisc)
 
  ### From 2014.syrphid.analysis.r
 
@@ -101,7 +102,7 @@ source('analysis_chromevol.r')
 source('figure_size_shape_vs_taxonomy.r')
 source('figure_combined_allometry.r')
 
-
+source('figure_phylogeny_plot_with_allometry_vignettes.r')
 
 ### Not used (apparently) - var comp analyses of morph and karyo
 ##          ## morph, varcomp analysis
