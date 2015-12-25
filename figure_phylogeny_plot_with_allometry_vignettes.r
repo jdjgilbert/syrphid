@@ -49,6 +49,7 @@ a$occ <- as.vector(table(karnd$genus))
 
 b <- subset(a, select=c(1:5))
 b <- t(apply(b, 1, function(x) x/sum(x)))  ## matrix of proportions within genus represented by that chromosome count
+#### Remember to check these against the data used in the karyotype group analysis
 
 #tree <- tree1
 #tree <- read.tree(text = write.tree(tree))  ## Weird fudge to get tip labels in the correct order in the R object!
