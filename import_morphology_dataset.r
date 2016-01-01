@@ -1,6 +1,12 @@
 
 ### Import morphological dataset 
 
+nrow(d <- read.csv('Data/morphometric data flat.csv'))
+#[1] 1555
+
+d$binomial <- paste(d$genus, d$species, sep="_")
+
+
 prob <- read.table('Data/females2.txt', sep='\t', header=T) ### Morphology dataset inc. proboscis characters
 
 prob$binomial<-paste(prob$GENUS, prob$SPECIES, sep='_')

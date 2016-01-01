@@ -1,16 +1,6 @@
-
-
-
-### test
-
-### test committed
-
 ### Check within species coverage
 
-nrow(d <- read.csv('Data/morphometric data flat.csv'))
-#[1] 1555
-
-d$binomial <- paste(d$genus, d$species, sep="_")
+### d is the individual level dataset
 
 head(sort(a <- table(d$binomial), decreasing=T), 20)
 # Syrphus_ribesii        Eristalis_tenax     Rhingia_campestris        Syritta_pipiens 
@@ -27,9 +17,15 @@ head(sort(a <- table(d$binomial), decreasing=T), 20)
 head(b <- sort(a <- table(d$binomial), decreasing=T))
 head(names(b))
 
-length(c <- b[b>2])
+length(c <- b[b>4])
 # 150
 
 head(d <- sub('_.*','', names(c)))
 
 sort(a <- table(d), decreasing=T)
+
+(e <- names(a)[a>2])  ## genera with 3 or more representative species that each have 5 or more data points
+#[1] "Cheilosia"     "Eristalis"     "Eupeodes"      "Melanostoma"   "Platycheirus"  "Sericomyia"   
+#[7] "Sphaerophoria" "Syrphus"       "Xylota" 
+
+
