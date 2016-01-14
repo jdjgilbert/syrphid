@@ -1,6 +1,8 @@
 
 ### Import karyotype dataset
 
+warning('NEED A DATA DICTIONARY FOR FUTURE USERS')
+
 kar <- read.csv('Data/karyotype data from Boyes update direct copy 2011-06-04.csv')
 
 kar$Genus <- as.character(kar$Genus)
